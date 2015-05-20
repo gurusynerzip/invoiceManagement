@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Invoice Details of Mr. {{singalInvoice.custDetails.name}}
+        </div>
+
+        <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-2"><label>Invoice No.</label> {{singalInvoice.id}}</div>
+                    <div class="col-md-2"><label>Customer Name: </label> {{singalInvoice.custDetails.name}}</div>
+                    <div class="col-md-2"><label>Customer City: </label> {{singalInvoice.custDetails.city}}</div>
+                    <div class="col-md-3"><label>Paid or Outstanding Check: </label> <input type="checkbox" ng-checked="{{singalInvoice.paid}}"></div>
+                </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel  panel-warning" ng-show="warning">
+                        <div class="panel-heading"> No Invoice Found of this {{singalInvoice.id}} customer </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row" >
+                    <table class="table table-striped">
+                        <thead>
+                            <th>Item Name</th>
+                            <th>Item Cost</th>
+                            <th>Qunatity</th>
+                            <th>Total Cost</th>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="item in singalInvoice.itemList">
+                            <td>{{item.name}}</td>
+                            <td>{{item.cost}}</td>
+                            <td>{{item.qty}}</td>
+                            <td>{{item.costofItem}}</td>
+                        </tr>
+                        <tr><td></td><td></td><td></td><td><label>Total Amount to Pay</label> {{totalamount}} Rs.</td></tr>
+                        </tbody>
+                    </table>
+
+                </div>
+        </div>
+    </div>
+
+</div>

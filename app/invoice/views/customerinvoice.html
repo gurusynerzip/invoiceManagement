@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Invoice Detail of All Customers
+            <div class="input-group" style="margin-left: 221px; margin-top: -21px;"><input classtype="text" ng-model="test"> <span class="glyphicon glyphicon-search"></span></div>
+        </div>
+
+        <div class="panel-body">
+            <div><label class="label label-info">Customer Name: </label> {{ customerinvoices[0].custDetails.name}}</div>
+            <table class="table table-striped table-responsive">
+                <thead>
+                <tr>
+                    <th>Invoice No.</th>
+                    <th>Item Details</th>
+                    <th>Paid Details</th>
+                    <th>Paid/Outstanding Cost</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="invoice in customerinvoices | filter:test">
+                    <td><a ui-sref="invoiceDetail({invoiceId: invoice.id})">{{invoice.id}}</a></td>
+                    <td>
+                        <table class="table table-striped table-responsive">
+                            <thead><th>Item Name</th> <th>Item Cost</th> <th>Quantity</th><th>Cost</th></thead>
+                            <tbody>
+                            <tr ng-repeat="item in invoice.itemList">
+                                <td>{{item.name}}</td>
+                                <td>{{item.cost}}</td>
+                                <td>{{item.qty}}</td>
+                                <td>{{item.costofItem}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+
+                    <td><input type="checkbox" ng-checked="{{invoice.paid}}"> </td>
+                    <td>{{invoice.totalcost}}</td>
+                </tr>
+                <tr><td></td><td></td> <td>Total outstanding amount = <strong>{{outstandingAmt}} Rs. </strong></td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
